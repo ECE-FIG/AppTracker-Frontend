@@ -1,5 +1,13 @@
 <template>
   <v-content>
+    <v-container>
+    <v-layout
+    align-center
+    justify-center
+    >
+    <v-card
+    min-width="700"
+    >
     <v-carousel
     height="300"
     hide-delimiter-background
@@ -23,6 +31,9 @@
       </v-sheet>
     </v-carousel-item>
   </v-carousel>
+  </v-card>
+    </v-layout>
+    </v-container>
   </v-content>
 </template>
 

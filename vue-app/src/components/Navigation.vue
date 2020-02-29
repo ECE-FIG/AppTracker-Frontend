@@ -10,7 +10,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="goHistory">
           <v-list-item-action>
             <v-icon>mdi-poll</v-icon>
           </v-list-item-action>
@@ -18,7 +18,7 @@
             <v-list-item-title>History</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click="goProfile">
           <v-list-item-action>
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
@@ -50,6 +50,12 @@ export default {
   methods: {
     goHome() {
       this.$router.push({ name: "home" }).catch(() => {});
+    },
+    goHistory() {
+      this.$router.push({ name: "history" }).catch(() => {});
+    },
+    goProfile() {
+      this.$router.push({ name: "profile" }).catch(() => {});
     }
   }
 };

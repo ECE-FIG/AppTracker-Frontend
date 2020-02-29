@@ -8,9 +8,13 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 import Home from './components/Home.vue';
+import History from './components/History.vue';
+import Resume from './components/Resume.vue';
 
 const routes = [
-  { name: 'home', path: '', component: Home }
+  { name: 'home', path: '/', component: Home },
+  { name: 'History', path: '/history', component: History },
+  { name: 'Profile', path: '/profile', component: Resume }
 ]
 
 const router = new VueRouter({ mode: 'history', routes })
