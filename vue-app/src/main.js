@@ -7,16 +7,10 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 
-import Navigation from './components/Navigation.vue';
 import Home from './components/Home.vue';
 
 const routes = [
-  {
-    name: 'navigation', path: '/', component: Navigation,
-    children: [
-      { name: 'home', path: '', component: Home }
-    ]
-  },
+  { name: 'home', path: '', component: Home }
 ]
 
 const router = new VueRouter({ mode: 'history', routes })

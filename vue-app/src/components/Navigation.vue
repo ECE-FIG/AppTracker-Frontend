@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view />
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
         <v-list-item link @click="goHome">
