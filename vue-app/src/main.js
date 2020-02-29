@@ -9,12 +9,12 @@ Vue.use(VueRouter);
 
 import Home from './components/Home.vue';
 import History from './components/History.vue';
-import Resume from './components/Resume.vue';
+import Profile from './components/Profile.vue';
 
 const routes = [
   { name: 'home', path: '/', component: Home },
-  { name: 'History', path: '/history', component: History },
-  { name: 'Profile', path: '/profile', component: Resume }
+  { name: 'history', path: '/history', component: History },
+  { name: 'profile', path: '/profile', component: Profile }
 ]
 
 const router = new VueRouter({ mode: 'history', routes })
