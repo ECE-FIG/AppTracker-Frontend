@@ -5,7 +5,7 @@
         <v-col></v-col>
         <v-col align-self="center" class="pa-0" cols="4">
           <v-avatar class="profile" color="grey" size="120">
-            <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+            <v-img src="https://web.ma.utexas.edu/users/mhott/Pictures/passfoto.jpg"></v-img>
           </v-avatar>
         </v-col>
         <v-col>
@@ -27,10 +27,10 @@
 export default {
   data: () => ({
     profile: {
-      name: "John Doe",
+      name: "Michael Hott",
       role: "Software Engineer",
       email: "abcd1234@gmail.com",
-      pic: "https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
+      pic: "https://web.ma.utexas.edu/users/mhott/Pictures/passfoto.jpg"
     }
   })
 };
