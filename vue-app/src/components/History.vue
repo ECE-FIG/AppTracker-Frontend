@@ -29,7 +29,7 @@
     </div>
     <br />
     <div class="text-center">
-    <v-btn color="cyan" dark @click="addJob">Add Job</v-btn>
+      <v-btn color="cyan" dark @click="addJob">Add Job</v-btn>
     </div>
     <br />
   </v-content>
@@ -113,12 +113,10 @@ export default {
   methods: {
     getJobs() {
       axios.get("http://localhost:3000/applications").then(response => {
-        console.log(response.data);
         this.jobHistory = response.data;
       });
-      console.log(this.jobHistory);
     },
-    addJob()  {
+    addJob() {
       this.$router.push({ name: "jobform" }).catch(() => {});
     }
   },
@@ -127,9 +125,10 @@ export default {
       let jobsPerDate = {};
 
       this.jobHistory.forEach(object => {
-        jobsPerDate[object.created_date] =
-          jobsPerDate[object.created_date] + 1 || 1;
+        let formattedDate = object.created_date.substring(0, 10);
+        jobsPerDate[formattedDate] = jobsPerDate[formattedDate] + 1 || 1;
       });
+
       return jobsPerDate;
     },
     updateJobs() {
