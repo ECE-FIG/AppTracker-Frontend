@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import axios from "axios"
 const gradients = [
   ["#222"],
   ["#42b3f4"],
@@ -72,45 +73,51 @@ export default {
       { text: "Description", value: "Description" },
       { text: "Application Date", value: "ApplicationDate" }
     ],
-    jobHistory: [
-      {
-        Company: "Facebook",
-        Position: "Software Engineer",
-        Location: "Austin, TX",
-        Description: "OOP, Data Structures, Algorithms",
-        ApplicationDate: "2/29/2020"
-      },
-      {
-        Company: "Apple",
-        Position: "Embedded Software Engineer",
-        Location: "Cupertino, CA",
-        Description: "Microcontrollers, C, Assembly",
-        ApplicationDate: "2/29/2020"
-      },
-      {
-        Company: "Amazon",
-        Position: "Cloud Engineer",
-        Location: "Seattle, WA",
-        Description: "Cloud Computing, Networks, Distributed Systems",
-        ApplicationDate: "2/30/2020"
-      },
-      {
-        Company: "Netflix",
-        Position: "Software Engineer",
-        Location: "Austin, TX",
-        Description: "OOP, Data Structures, Algorithms",
-        ApplicationDate: "2/31/2020"
-      },
-      {
-        Company: "Google",
-        Position: "Machine Learning Engineer",
-        Location: "Palo Alto, CA",
-        Description: "Data Science, ML/AI",
-        ApplicationDate: "2/31/2020"
-      }
-    ]
+    jobHistory: []
+      // {
+      //   Company: "Facebook",
+      //   Position: "Software Engineer",
+      //   Location: "Austin, TX",
+      //   Description: "OOP, Data Structures, Algorithms",
+      //   ApplicationDate: "2/29/2020"
+      // },
+      // {
+      //   Company: "Apple",
+      //   Position: "Embedded Software Engineer",
+      //   Location: "Cupertino, CA",
+      //   Description: "Microcontrollers, C, Assembly",
+      //   ApplicationDate: "2/29/2020"
+      // },
+      // {
+      //   Company: "Amazon",
+      //   Position: "Cloud Engineer",
+      //   Location: "Seattle, WA",
+      //   Description: "Cloud Computing, Networks, Distributed Systems",
+      //   ApplicationDate: "2/30/2020"
+      // },
+      // {
+      //   Company: "Netflix",
+      //   Position: "Software Engineer",
+      //   Location: "Austin, TX",
+      //   Description: "OOP, Data Structures, Algorithms",
+      //   ApplicationDate: "2/31/2020"
+      // },
+      // {
+      //   Company: "Google",
+      //   Position: "Machine Learning Engineer",
+      //   Location: "Palo Alto, CA",
+      //   Description: "Data Science, ML/AI",
+      //   ApplicationDate: "2/31/2020"
+      // }
+    
   }),
-  methods: {},
+  methods: {
+    getJobs() {
+      axios.get('http://localhost:3000/applications').then((response) => {
+        this.jobHistory = response;
+      })
+     }
+  },
   computed: {
     totalJobsPerDate() {
       let jobsPerDate = {};
@@ -128,8 +135,6 @@ export default {
         jobCount.push(this.totalJobsPerDate[date]);
       }
 
-      console.log(jobCount);
-
       return jobCount;
     },
     updateDates() {
@@ -141,7 +146,11 @@ export default {
 
       return dates;
     }
+  },
+  ready: function() {
+    this.getJobs();
   }
+
 };
 </script>
 
