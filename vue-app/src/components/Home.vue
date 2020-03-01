@@ -1,5 +1,10 @@
 <template>
   <v-content>
+    <br />
+    <div class="text-center">
+    <v-btn color="cyan" dark @click="addJob">Add Job</v-btn>
+    </div>
+    <br />
     <v-container>
       <v-layout align-center justify-center>
         <v-card width="700">
@@ -16,7 +21,7 @@
           <v-list one-line>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>Recommended Jobs</v-list-item-title>
+          <v-list-item-title>Top Jobs</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
           </v-list>
@@ -54,6 +59,7 @@
         </v-list>
       </v-card>
     </v-row>
+
   </v-content>
 </template>
 
@@ -139,6 +145,11 @@ export default {
       avatar: true,
       rounded: false,
     };
+  },
+  methods: {
+    addJob()  {
+      this.$router.push({ name: "jobform" }).catch(() => {});
+    }
   }
 };
 </script>
