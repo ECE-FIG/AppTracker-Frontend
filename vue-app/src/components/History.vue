@@ -10,7 +10,7 @@
         :value="updateJobs"
         :labels="updateDates"
         :gradient="gradient"
-        :smooth="radius || false"
+        :smooth="radius || true"
         :padding="padding"
         :line-width="lineWidth"
         :stroke-linecap="lineCap"
@@ -103,7 +103,7 @@ export default {
         jobCount.push(this.totalJobsPerDate[date]);
       }
 
-      return jobCount;
+      return jobCount.sort();
     },
     updateDates() {
       let dates = [];
@@ -112,7 +112,7 @@ export default {
         dates.push(date.substring(0, 10));
       }
 
-      return dates;
+      return dates.sort();
     }
   },
   mounted: function() {
