@@ -25,18 +25,13 @@
       ></v-sparkline>
     </div>
     <div>
-      <v-data-table 
-        :headers="headers" 
-        :items="jobHistory" 
-        :items-per-page="5" 
-        class="elevation-1">
-      </v-data-table>
+      <v-data-table :headers="headers" :items="jobHistory" :items-per-page="5" class="elevation-1"></v-data-table>
     </div>
   </v-content>
 </template>
 
 <script>
-import axios from "axios"
+import axios from "axios";
 const gradients = [
   ["#222"],
   ["#42b3f4"],
@@ -66,65 +61,66 @@ export default {
         text: "Company",
         align: "start",
         sortable: true,
-        value: "Company"
+        value: "companyName"
       },
-      { text: "Position", value: "Position" },
-      { text: "Location", value: "Location" },
-      { text: "Description", value: "Description" },
-      { text: "Application Date", value: "ApplicationDate" }
+      { text: "Position", value: "jobTitle" },
+      { text: "Location", value: "location" },
+      { text: "Description", value: "link" },
+      { text: "Application Date", value: "created_date" }
     ],
     jobHistory: []
-      // {
-      //   Company: "Facebook",
-      //   Position: "Software Engineer",
-      //   Location: "Austin, TX",
-      //   Description: "OOP, Data Structures, Algorithms",
-      //   ApplicationDate: "2/29/2020"
-      // },
-      // {
-      //   Company: "Apple",
-      //   Position: "Embedded Software Engineer",
-      //   Location: "Cupertino, CA",
-      //   Description: "Microcontrollers, C, Assembly",
-      //   ApplicationDate: "2/29/2020"
-      // },
-      // {
-      //   Company: "Amazon",
-      //   Position: "Cloud Engineer",
-      //   Location: "Seattle, WA",
-      //   Description: "Cloud Computing, Networks, Distributed Systems",
-      //   ApplicationDate: "2/30/2020"
-      // },
-      // {
-      //   Company: "Netflix",
-      //   Position: "Software Engineer",
-      //   Location: "Austin, TX",
-      //   Description: "OOP, Data Structures, Algorithms",
-      //   ApplicationDate: "2/31/2020"
-      // },
-      // {
-      //   Company: "Google",
-      //   Position: "Machine Learning Engineer",
-      //   Location: "Palo Alto, CA",
-      //   Description: "Data Science, ML/AI",
-      //   ApplicationDate: "2/31/2020"
-      // }
-    
+    // {
+    //   Company: "Facebook",
+    //   Position: "Software Engineer",
+    //   Location: "Austin, TX",
+    //   Description: "OOP, Data Structures, Algorithms",
+    //   ApplicationDate: "2/29/2020"
+    // },
+    // {
+    //   Company: "Apple",
+    //   Position: "Embedded Software Engineer",
+    //   Location: "Cupertino, CA",
+    //   Description: "Microcontrollers, C, Assembly",
+    //   ApplicationDate: "2/29/2020"
+    // },
+    // {
+    //   Company: "Amazon",
+    //   Position: "Cloud Engineer",
+    //   Location: "Seattle, WA",
+    //   Description: "Cloud Computing, Networks, Distributed Systems",
+    //   ApplicationDate: "2/30/2020"
+    // },
+    // {
+    //   Company: "Netflix",
+    //   Position: "Software Engineer",
+    //   Location: "Austin, TX",
+    //   Description: "OOP, Data Structures, Algorithms",
+    //   ApplicationDate: "2/31/2020"
+    // },
+    // {
+    //   Company: "Google",
+    //   Position: "Machine Learning Engineer",
+    //   Location: "Palo Alto, CA",
+    //   Description: "Data Science, ML/AI",
+    //   ApplicationDate: "2/31/2020"
+    // }
   }),
   methods: {
     getJobs() {
-      axios.get('http://localhost:3000/applications').then((response) => {
-        this.jobHistory = response;
-      })
-     }
+      axios.get("http://localhost:3000/applications").then(response => {
+        console.log(response.data);
+        this.jobHistory = response.data;
+      });
+      console.log(this.jobHistory);
+    }
   },
   computed: {
     totalJobsPerDate() {
       let jobsPerDate = {};
 
       this.jobHistory.forEach(object => {
-        jobsPerDate[object.ApplicationDate] =
-          jobsPerDate[object.ApplicationDate] + 1 || 1;
+        jobsPerDate[object.created_date] =
+          jobsPerDate[object.created_date] + 1 || 1;
       });
       return jobsPerDate;
     },
@@ -141,21 +137,20 @@ export default {
       let dates = [];
 
       for (let date in this.totalJobsPerDate) {
-        dates.push(date);
+        dates.push(date.substring(0, 10));
       }
 
       return dates;
     }
   },
-  ready: function() {
+  mounted: function() {
     this.getJobs();
   }
-
 };
 </script>
 
 <style>
- h1 {
-   padding: 5px;
- }
+h1 {
+  padding: 5px;
+}
 </style>
