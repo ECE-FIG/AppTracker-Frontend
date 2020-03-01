@@ -1,10 +1,5 @@
 <template>
   <v-content>
-    <br />
-    <div class="text-center">
-    <v-btn color="cyan" dark @click="addJob">Add Job</v-btn>
-    </div>
-    <br />
     <v-container>
       <v-layout align-center justify-center>
         <v-card width="700">
@@ -146,10 +141,6 @@ export default {
       rounded: false,
     };
   },
-  methods: {
-    addJob()  {
-      this.$router.push({ name: "jobform" }).catch(() => {});
-    }
-  }
+
 };
 </script>

@@ -27,6 +27,11 @@
     <div>
       <v-data-table :headers="headers" :items="jobHistory" :items-per-page="5" class="elevation-1"></v-data-table>
     </div>
+    <br />
+    <div class="text-center">
+    <v-btn color="cyan" dark @click="addJob">Add Job</v-btn>
+    </div>
+    <br />
   </v-content>
 </template>
 
@@ -112,6 +117,9 @@ export default {
         this.jobHistory = response.data;
       });
       console.log(this.jobHistory);
+    },
+    addJob()  {
+      this.$router.push({ name: "jobform" }).catch(() => {});
     }
   },
   computed: {
