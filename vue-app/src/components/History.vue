@@ -17,7 +17,7 @@
         :gradient-direction="gradientDirection"
         :fill="fill"
         :type="type"
-        :auto-line-width="autoLineWidth || true"
+        :auto-line-width="autoLineWidth || false"
         auto-draw
         :show-labels="showLabels"
         color="rgba(255, 255, 255)"
@@ -59,7 +59,7 @@ export default {
     gradientDirection: "top",
     gradients,
     fill: false,
-    type: "bar",
+    type: "trend",
     autoLineWidth: false,
     headers: [
       {
@@ -74,41 +74,6 @@ export default {
       { text: "Application Date", value: "created_date" }
     ],
     jobHistory: []
-    // {
-    //   Company: "Facebook",
-    //   Position: "Software Engineer",
-    //   Location: "Austin, TX",
-    //   Description: "OOP, Data Structures, Algorithms",
-    //   ApplicationDate: "2/29/2020"
-    // },
-    // {
-    //   Company: "Apple",
-    //   Position: "Embedded Software Engineer",
-    //   Location: "Cupertino, CA",
-    //   Description: "Microcontrollers, C, Assembly",
-    //   ApplicationDate: "2/29/2020"
-    // },
-    // {
-    //   Company: "Amazon",
-    //   Position: "Cloud Engineer",
-    //   Location: "Seattle, WA",
-    //   Description: "Cloud Computing, Networks, Distributed Systems",
-    //   ApplicationDate: "2/30/2020"
-    // },
-    // {
-    //   Company: "Netflix",
-    //   Position: "Software Engineer",
-    //   Location: "Austin, TX",
-    //   Description: "OOP, Data Structures, Algorithms",
-    //   ApplicationDate: "2/31/2020"
-    // },
-    // {
-    //   Company: "Google",
-    //   Position: "Machine Learning Engineer",
-    //   Location: "Palo Alto, CA",
-    //   Description: "Data Science, ML/AI",
-    //   ApplicationDate: "2/31/2020"
-    // }
   }),
   methods: {
     getJobs() {
